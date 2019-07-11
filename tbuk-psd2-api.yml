@@ -1,1 +1,1011 @@
-{"swagger":"2.0","info":{"description":"This document lists all the rest apis for TBUK PSD2 Services","version":"1.0-SNAPSHOT","title":"TBUK Open Banking/PSD2 APIs"},"host":"localhost:8090","basePath":"/","tags":[{"name":"auth-service","description":"Account Information Service"},{"name":"payment-initiation-service","description":"Payment Initiation Service"},{"name":"account-information-service","description":"Account Information Service"}],"paths":{"/AccountInformation/getAccountDetail/{accountId}":{"get":{"tags":["account-information-service"],"summary":"getAccountDetail","operationId":"getAccountDetailUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"accountId","in":"path","description":"accountId","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/AccountDetail"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/AccountInformation/getAccountTransactions/{accountId}/{dateFrom}/{dateTo}":{"get":{"tags":["account-information-service"],"summary":"getAccountTransactions","operationId":"getAccountTransactionsUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"accountId","in":"path","description":"accountId","required":true,"type":"string"},{"name":"dateFrom","in":"path","description":"dateFrom","required":true,"type":"string"},{"name":"dateTo","in":"path","description":"dateTo","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"array","items":{"$ref":"#/definitions/AccountTransaction"}}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/AccountInformation/getAccountsList":{"get":{"tags":["account-information-service"],"summary":"getAccounts","operationId":"getAccountsUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"array","items":{"$ref":"#/definitions/BankAccount"}}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/AccountInformation/getBalance/{accountId}":{"get":{"tags":["account-information-service"],"summary":"getBalance","operationId":"getBalanceUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"accountId","in":"path","description":"accountId","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"number","format":"double"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/AccountInformation/getStatement/{accountId}/{month}/{year}":{"get":{"tags":["account-information-service"],"summary":"getStatement","operationId":"getStatementUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"accountId","in":"path","description":"accountId","required":true,"type":"string"},{"name":"month","in":"path","description":"month","required":true,"type":"integer","format":"int32"},{"name":"year","in":"path","description":"year","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/Statement"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/Auth/getAuthorisation":{"get":{"tags":["auth-service"],"summary":"getAccounts","operationId":"getAccountsUsingGET_1","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/BankAuthorization"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/Auth/getPaymentUID":{"get":{"tags":["auth-service"],"summary":"getAccountDetail","operationId":"getAccountDetailUsingGET_1","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"accountId","in":"path","description":"accountId","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"string"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/PaymentInitiation/domesticPayment":{"post":{"tags":["payment-initiation-service"],"summary":"domesticPayment","operationId":"domesticPaymentUsingPOST","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"grpHdr.referenceId","in":"query","required":false,"type":"string"},{"name":"debtor.address.address","in":"query","required":false,"type":"string"},{"name":"debtor.address.city","in":"query","required":false,"type":"string"},{"name":"debtor.address.country","in":"query","required":false,"type":"string"},{"name":"debtor.address.postCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountId","in":"query","required":false,"type":"string"},{"name":"debtor.name","in":"query","required":false,"type":"string"},{"name":"debtor.sortCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountNo","in":"query","required":false,"type":"string"},{"name":"debtor.bicCode","in":"query","required":false,"type":"string"},{"name":"debtor.iban","in":"query","required":false,"type":"string"},{"name":"debtor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"debtor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"debtor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"creditor.address.address","in":"query","required":false,"type":"string"},{"name":"creditor.address.city","in":"query","required":false,"type":"string"},{"name":"creditor.address.country","in":"query","required":false,"type":"string"},{"name":"creditor.address.postCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountId","in":"query","required":false,"type":"string"},{"name":"creditor.name","in":"query","required":false,"type":"string"},{"name":"creditor.sortCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountNo","in":"query","required":false,"type":"string"},{"name":"creditor.bicCode","in":"query","required":false,"type":"string"},{"name":"creditor.iban","in":"query","required":false,"type":"string"},{"name":"creditor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"creditor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"creditor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"instructedAmount.amount","in":"query","required":false,"type":"number","format":"double"},{"name":"instructedAmount.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"remittanceInfo.unstructuredData","in":"query","required":false,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/PaymentResult"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/PaymentInitiation/internationalPayment":{"post":{"tags":["payment-initiation-service"],"summary":"internationalPayment","operationId":"internationalPaymentUsingPOST","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"grpHdr.referenceId","in":"query","required":false,"type":"string"},{"name":"debtor.address.address","in":"query","required":false,"type":"string"},{"name":"debtor.address.city","in":"query","required":false,"type":"string"},{"name":"debtor.address.country","in":"query","required":false,"type":"string"},{"name":"debtor.address.postCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountId","in":"query","required":false,"type":"string"},{"name":"debtor.name","in":"query","required":false,"type":"string"},{"name":"debtor.sortCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountNo","in":"query","required":false,"type":"string"},{"name":"debtor.bicCode","in":"query","required":false,"type":"string"},{"name":"debtor.iban","in":"query","required":false,"type":"string"},{"name":"debtor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"debtor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"debtor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"creditor.address.address","in":"query","required":false,"type":"string"},{"name":"creditor.address.city","in":"query","required":false,"type":"string"},{"name":"creditor.address.country","in":"query","required":false,"type":"string"},{"name":"creditor.address.postCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountId","in":"query","required":false,"type":"string"},{"name":"creditor.name","in":"query","required":false,"type":"string"},{"name":"creditor.sortCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountNo","in":"query","required":false,"type":"string"},{"name":"creditor.bicCode","in":"query","required":false,"type":"string"},{"name":"creditor.iban","in":"query","required":false,"type":"string"},{"name":"creditor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"creditor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"creditor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"instructedAmount.amount","in":"query","required":false,"type":"number","format":"double"},{"name":"instructedAmount.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"remittanceInfo.unstructuredData","in":"query","required":false,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/PaymentResult"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/PaymentInitiation/paymentStatusEnquiry/{transactionId}":{"get":{"tags":["payment-initiation-service"],"summary":"paymentStatusEnquiry","operationId":"paymentStatusEnquiryUsingGET","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"transactionId","in":"path","description":"transactionId","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/PaymentResult"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/PaymentInitiation/transferBetweenAccounts":{"post":{"tags":["payment-initiation-service"],"summary":"transferBetweenAccounts","operationId":"transferBetweenAccountsUsingPOST","consumes":["application/json"],"produces":["*/*"],"parameters":[{"name":"client_Id","in":"query","required":false,"type":"string"},{"name":"psu_IP","in":"query","required":false,"type":"string"},{"name":"grpHdr.referenceId","in":"query","required":false,"type":"string"},{"name":"debtor.address.address","in":"query","required":false,"type":"string"},{"name":"debtor.address.city","in":"query","required":false,"type":"string"},{"name":"debtor.address.country","in":"query","required":false,"type":"string"},{"name":"debtor.address.postCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountId","in":"query","required":false,"type":"string"},{"name":"debtor.name","in":"query","required":false,"type":"string"},{"name":"debtor.sortCode","in":"query","required":false,"type":"string"},{"name":"debtor.accountNo","in":"query","required":false,"type":"string"},{"name":"debtor.bicCode","in":"query","required":false,"type":"string"},{"name":"debtor.iban","in":"query","required":false,"type":"string"},{"name":"debtor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"debtor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"debtor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"creditor.address.address","in":"query","required":false,"type":"string"},{"name":"creditor.address.city","in":"query","required":false,"type":"string"},{"name":"creditor.address.country","in":"query","required":false,"type":"string"},{"name":"creditor.address.postCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountId","in":"query","required":false,"type":"string"},{"name":"creditor.name","in":"query","required":false,"type":"string"},{"name":"creditor.sortCode","in":"query","required":false,"type":"string"},{"name":"creditor.accountNo","in":"query","required":false,"type":"string"},{"name":"creditor.bicCode","in":"query","required":false,"type":"string"},{"name":"creditor.iban","in":"query","required":false,"type":"string"},{"name":"creditor.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"creditor.accountSubType","in":"query","required":false,"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},{"name":"creditor.statementAvailable","in":"query","required":false,"type":"boolean"},{"name":"instructedAmount.amount","in":"query","required":false,"type":"number","format":"double"},{"name":"instructedAmount.currency","in":"query","required":false,"type":"string","enum":["GBP","USD","TRY","EUR"]},{"name":"remittanceInfo.unstructuredData","in":"query","required":false,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/PaymentResult"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}}},"definitions":{"PaymentInfo":{"type":"object","properties":{"charge":{"$ref":"#/definitions/Charge"},"convertedAmount":{"type":"number","format":"double"},"instructedAmount":{"type":"number","format":"double"},"instructedCurrency":{"type":"string","enum":["GBP","USD","TRY","EUR"]},"rate":{"type":"number","format":"double"}}},"AccountDetail":{"type":"object","properties":{"balance":{"type":"number","format":"double"},"bankAccount":{"$ref":"#/definitions/BankAccount"}}},"Address":{"type":"object","properties":{"address":{"type":"string"},"city":{"type":"string"},"country":{"type":"string"},"postCode":{"type":"string"}}},"Statement":{"type":"object","properties":{"base64StatementFile":{"type":"string"},"fileName":{"type":"string"},"statementDate":{"type":"string","format":"date"}}},"PaymentResult":{"type":"object","properties":{"error":{"$ref":"#/definitions/Error"},"paymentInfo":{"$ref":"#/definitions/PaymentInfo"},"referenceId":{"type":"string"},"status":{"type":"string","enum":["INVALID_STATUS","PENDING","PROCESSING","SUCCESS","PENDING_EXTERNAL_AUTHORIZATION","FAILURE_INSUFFICIENT_FUNDS","FAILURE_GENERIC","SENT","INITIATED"]}}},"Charge":{"type":"object","properties":{"amount":{"type":"number","format":"double"},"chargeName":{"type":"string"},"currency":{"type":"string","enum":["GBP","USD","TRY","EUR"]},"tax":{"type":"number","format":"double"}}},"BankAuthorization":{"type":"object"},"Error":{"type":"object","properties":{"errorCode":{"type":"string"},"errorText":{"type":"string"},"httpErrorCode":{"type":"integer","format":"int32"}}},"BankAccount":{"type":"object","properties":{"accountId":{"type":"string"},"accountNo":{"type":"string"},"accountSubType":{"type":"string","enum":["CURRENT_ACCOUNT","NOTICE_ACCOUNT","TIME_DEPOSITS"]},"address":{"$ref":"#/definitions/Address"},"bicCode":{"type":"string"},"currency":{"type":"string","enum":["GBP","USD","TRY","EUR"]},"iban":{"type":"string"},"name":{"type":"string"},"sortCode":{"type":"string"},"statementAvailable":{"type":"boolean"}}},"AccountTransaction":{"type":"object","properties":{"amount":{"type":"number","format":"double"},"chargeInfo":{"$ref":"#/definitions/Charge"},"currency":{"type":"string","enum":["GBP","USD","TRY","EUR"]},"description":{"type":"string"},"from":{"$ref":"#/definitions/BankAccount"},"referenceId":{"type":"string"},"status":{"type":"string","enum":["INVALID_STATUS","PENDING","PROCESSING","SUCCESS","PENDING_EXTERNAL_AUTHORIZATION","FAILURE_INSUFFICIENT_FUNDS","FAILURE_GENERIC","SENT","INITIATED"]},"to":{"$ref":"#/definitions/BankAccount"},"transactionId":{"type":"string"}}}}}
+swagger: '2.0'
+info:
+  description: This document lists all the rest apis for TBUK PSD2 Services
+  version: 1.0-SNAPSHOT
+  title: TBUK Open Banking/PSD2 APIs
+host: 'localhost:8090'
+basePath: /
+tags:
+  - name: auth-service
+    description: Account Information Service
+  - name: payment-initiation-service
+    description: Payment Initiation Service
+  - name: account-information-service
+    description: Account Information Service
+paths:
+  '/AccountInformation/getAccountDetail/{accountId}':
+    get:
+      tags:
+        - account-information-service
+      summary: getAccountDetail
+      operationId: getAccountDetailUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AccountDetail'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/AccountInformation/getAccountTransactions/{accountId}/{dateFrom}/{dateTo}':
+    get:
+      tags:
+        - account-information-service
+      summary: getAccountTransactions
+      operationId: getAccountTransactionsUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          type: string
+        - name: dateFrom
+          in: path
+          description: dateFrom
+          required: true
+          type: string
+        - name: dateTo
+          in: path
+          description: dateTo
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AccountTransaction'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /AccountInformation/getAccountsList:
+    get:
+      tags:
+        - account-information-service
+      summary: getAccounts
+      operationId: getAccountsUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BankAccount'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/AccountInformation/getBalance/{accountId}':
+    get:
+      tags:
+        - account-information-service
+      summary: getBalance
+      operationId: getBalanceUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: number
+            format: double
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/AccountInformation/getStatement/{accountId}/{month}/{year}':
+    get:
+      tags:
+        - account-information-service
+      summary: getStatement
+      operationId: getStatementUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          type: string
+        - name: month
+          in: path
+          description: month
+          required: true
+          type: integer
+          format: int32
+        - name: year
+          in: path
+          description: year
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Statement'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Auth/getAuthorisation:
+    get:
+      tags:
+        - auth-service
+      summary: getAccounts
+      operationId: getAccountsUsingGET_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BankAuthorization'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Auth/getPaymentUID:
+    get:
+      tags:
+        - auth-service
+      summary: getAccountDetail
+      operationId: getAccountDetailUsingGET_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /PaymentInitiation/domesticPayment:
+    post:
+      tags:
+        - payment-initiation-service
+      summary: domesticPayment
+      operationId: domesticPaymentUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: grpHdr.referenceId
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.address
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.city
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.country
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountId
+          in: query
+          required: false
+          type: string
+        - name: debtor.name
+          in: query
+          required: false
+          type: string
+        - name: debtor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: debtor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.iban
+          in: query
+          required: false
+          type: string
+        - name: debtor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: debtor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: debtor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: creditor.address.address
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.city
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.country
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountId
+          in: query
+          required: false
+          type: string
+        - name: creditor.name
+          in: query
+          required: false
+          type: string
+        - name: creditor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: creditor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.iban
+          in: query
+          required: false
+          type: string
+        - name: creditor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: creditor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: creditor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: instructedAmount.amount
+          in: query
+          required: false
+          type: number
+          format: double
+        - name: instructedAmount.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: remittanceInfo.unstructuredData
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResult'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /PaymentInitiation/internationalPayment:
+    post:
+      tags:
+        - payment-initiation-service
+      summary: internationalPayment
+      operationId: internationalPaymentUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: grpHdr.referenceId
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.address
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.city
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.country
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountId
+          in: query
+          required: false
+          type: string
+        - name: debtor.name
+          in: query
+          required: false
+          type: string
+        - name: debtor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: debtor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.iban
+          in: query
+          required: false
+          type: string
+        - name: debtor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: debtor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: debtor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: creditor.address.address
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.city
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.country
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountId
+          in: query
+          required: false
+          type: string
+        - name: creditor.name
+          in: query
+          required: false
+          type: string
+        - name: creditor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: creditor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.iban
+          in: query
+          required: false
+          type: string
+        - name: creditor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: creditor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: creditor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: instructedAmount.amount
+          in: query
+          required: false
+          type: number
+          format: double
+        - name: instructedAmount.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: remittanceInfo.unstructuredData
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResult'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/PaymentInitiation/paymentStatusEnquiry/{transactionId}':
+    get:
+      tags:
+        - payment-initiation-service
+      summary: paymentStatusEnquiry
+      operationId: paymentStatusEnquiryUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: transactionId
+          in: path
+          description: transactionId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResult'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /PaymentInitiation/transferBetweenAccounts:
+    post:
+      tags:
+        - payment-initiation-service
+      summary: transferBetweenAccounts
+      operationId: transferBetweenAccountsUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: client_Id
+          in: query
+          required: false
+          type: string
+        - name: psu_IP
+          in: query
+          required: false
+          type: string
+        - name: grpHdr.referenceId
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.address
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.city
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.country
+          in: query
+          required: false
+          type: string
+        - name: debtor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountId
+          in: query
+          required: false
+          type: string
+        - name: debtor.name
+          in: query
+          required: false
+          type: string
+        - name: debtor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: debtor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: debtor.iban
+          in: query
+          required: false
+          type: string
+        - name: debtor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: debtor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: debtor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: creditor.address.address
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.city
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.country
+          in: query
+          required: false
+          type: string
+        - name: creditor.address.postCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountId
+          in: query
+          required: false
+          type: string
+        - name: creditor.name
+          in: query
+          required: false
+          type: string
+        - name: creditor.sortCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.accountNo
+          in: query
+          required: false
+          type: string
+        - name: creditor.bicCode
+          in: query
+          required: false
+          type: string
+        - name: creditor.iban
+          in: query
+          required: false
+          type: string
+        - name: creditor.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: creditor.accountSubType
+          in: query
+          required: false
+          type: string
+          enum:
+            - CURRENT_ACCOUNT
+            - NOTICE_ACCOUNT
+            - TIME_DEPOSITS
+        - name: creditor.statementAvailable
+          in: query
+          required: false
+          type: boolean
+        - name: instructedAmount.amount
+          in: query
+          required: false
+          type: number
+          format: double
+        - name: instructedAmount.currency
+          in: query
+          required: false
+          type: string
+          enum:
+            - GBP
+            - USD
+            - TRY
+            - EUR
+        - name: remittanceInfo.unstructuredData
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResult'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  PaymentInfo:
+    type: object
+    properties:
+      charge:
+        $ref: '#/definitions/Charge'
+      convertedAmount:
+        type: number
+        format: double
+      instructedAmount:
+        type: number
+        format: double
+      instructedCurrency:
+        type: string
+        enum:
+          - GBP
+          - USD
+          - TRY
+          - EUR
+      rate:
+        type: number
+        format: double
+  AccountDetail:
+    type: object
+    properties:
+      balance:
+        type: number
+        format: double
+      bankAccount:
+        $ref: '#/definitions/BankAccount'
+  Address:
+    type: object
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      postCode:
+        type: string
+  Statement:
+    type: object
+    properties:
+      base64StatementFile:
+        type: string
+      fileName:
+        type: string
+      statementDate:
+        type: string
+        format: date
+  PaymentResult:
+    type: object
+    properties:
+      error:
+        $ref: '#/definitions/Error'
+      paymentInfo:
+        $ref: '#/definitions/PaymentInfo'
+      referenceId:
+        type: string
+      status:
+        type: string
+        enum:
+          - INVALID_STATUS
+          - PENDING
+          - PROCESSING
+          - SUCCESS
+          - PENDING_EXTERNAL_AUTHORIZATION
+          - FAILURE_INSUFFICIENT_FUNDS
+          - FAILURE_GENERIC
+          - SENT
+          - INITIATED
+  Charge:
+    type: object
+    properties:
+      amount:
+        type: number
+        format: double
+      chargeName:
+        type: string
+      currency:
+        type: string
+        enum:
+          - GBP
+          - USD
+          - TRY
+          - EUR
+      tax:
+        type: number
+        format: double
+  BankAuthorization:
+    type: object
+  Error:
+    type: object
+    properties:
+      errorCode:
+        type: string
+      errorText:
+        type: string
+      httpErrorCode:
+        type: integer
+        format: int32
+  BankAccount:
+    type: object
+    properties:
+      accountId:
+        type: string
+      accountNo:
+        type: string
+      accountSubType:
+        type: string
+        enum:
+          - CURRENT_ACCOUNT
+          - NOTICE_ACCOUNT
+          - TIME_DEPOSITS
+      address:
+        $ref: '#/definitions/Address'
+      bicCode:
+        type: string
+      currency:
+        type: string
+        enum:
+          - GBP
+          - USD
+          - TRY
+          - EUR
+      iban:
+        type: string
+      name:
+        type: string
+      sortCode:
+        type: string
+      statementAvailable:
+        type: boolean
+  AccountTransaction:
+    type: object
+    properties:
+      amount:
+        type: number
+        format: double
+      chargeInfo:
+        $ref: '#/definitions/Charge'
+      currency:
+        type: string
+        enum:
+          - GBP
+          - USD
+          - TRY
+          - EUR
+      description:
+        type: string
+      from:
+        $ref: '#/definitions/BankAccount'
+      referenceId:
+        type: string
+      status:
+        type: string
+        enum:
+          - INVALID_STATUS
+          - PENDING
+          - PROCESSING
+          - SUCCESS
+          - PENDING_EXTERNAL_AUTHORIZATION
+          - FAILURE_INSUFFICIENT_FUNDS
+          - FAILURE_GENERIC
+          - SENT
+          - INITIATED
+      to:
+        $ref: '#/definitions/BankAccount'
+      transactionId:
+        type: string
