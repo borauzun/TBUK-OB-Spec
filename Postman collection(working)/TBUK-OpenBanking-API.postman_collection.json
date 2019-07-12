@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "f3de7be6-1a2d-413e-bb8c-583c01e3e992",
+		"name": "TBUK-OpenBanking-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AccountLinking Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-AccountLink-url}}",
+					"host": [
+						"{{TBUK-AccountLink-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-GetAuthorisationRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AUTH-BASE}}/getAuthorisation",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AUTH-BASE}}",
+						"getAuthorisation"
+					]
+				},
+				"description": "This is to call TBUK Auth API's getAuthorisation() method. It will return list of authorized accounts for the particular access token"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-GetPaymentUID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AUTH-BASE}}/getPaymentUID/{{accountId}}",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AUTH-BASE}}",
+						"getPaymentUID",
+						"{{accountId}}"
+					]
+				},
+				"description": "One time password for TPP App, which needs to be encoded calling payment api( OPTIONAL )"
+			},
+			"response": []
+		},
+		{
+			"name": "AIS-getBalance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AIS-BASE}}/getBalance/{{accountId}}",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AIS-BASE}}",
+						"getBalance",
+						"{{accountId}}"
+					]
+				},
+				"description": "This request gets the balance of the account requested."
+			},
+			"response": []
+		},
+		{
+			"name": "AIS-getAccountList",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AIS-BASE}}/getAccountsList",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AIS-BASE}}",
+						"getAccountsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AIS-getAccountDetails",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AIS-BASE}}/getAccountDetail/{{accountId}}",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AIS-BASE}}",
+						"getAccountDetail",
+						"{{accountId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AIS-getAccountTransactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AIS-BASE}}/getAccountTransactions/{{accountId}}/{dateFrom}/{dateTo}",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AIS-BASE}}",
+						"getAccountTransactions",
+						"{{accountId}}",
+						"{dateFrom}",
+						"{dateTo}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AIS-getAccountStatement",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-AIS-BASE}}/getStatement/{{accountId}}/{{month}}/{{year}}",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-AIS-BASE}}",
+						"getStatement",
+						"{{accountId}}",
+						"{{month}}",
+						"{{year}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment-orderDomesticPayment1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "content_type",
+						"value": "d",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "e",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grpHdr\": {\n        \"referenceId\": \"tppRefId001\",\n        \"creDtTm\": {\"year\": 2019,\"month\": 7,\"day\": 12,\"hour\": 18,\"minute\": 23,\"second\": 44}\n    },\n    \"debtor\" : {\n    \"accountId\" : \"08351341\",\n    \"currency\" : \"GBP\"\n  },\n  \"creditor\" : {\n    \"accountId\" : \"08351342\",\n    \"name\" : \"JAMES BOND\",\n    \"sortCode\" : \"010101\",\n    \"accountNo\" : \"12345678\"\n  },\n  \"instructedAmount\" : {\n    \"amount\" : 200.0\n  },\n  \"remittanceInfo\" : {\n    \"unstructuredData\" : \"Domestic Transfer To IBAN Test\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-PAYMENT-BASE}}/domesticPayment",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-PAYMENT-BASE}}",
+						"domesticPayment"
+					]
+				},
+				"description": "This is a sample to initiate a domastic (UK) payment\nAccount Info must have\nSort-code , Account number"
+			},
+			"response": []
+		},
+		{
+			"name": "Payment-orderInternationalPayment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "content_type",
+						"value": "d",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "e",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grpHdr\": {\n        \"referenceId\": \"tppRefId001\",\n        \"creDtTm\": {\"year\": 2019,\"month\": 7,\"day\": 12,\"hour\": 18,\"minute\": 23,\"second\": 44}\n    },\n    \"debtor\" : {\n    \"accountId\" : \"08351341\",\n    \"currency\" : \"USD\",\n    \"statementAvailable\" : false\n  },\n  \"creditor\" : {\n    \"name\" : \"BORA UZUN\",\n    \"bicCode\" : \"TCZBTR2A\",\n    \"address\" : {\n      \"address\" : \"Kastel mevki\",\n      \"city\" : \"Trabzon\",\n      \"country\" : \"TR\",\n      \"postCode\" : \"61000\"\n    },\n    \"iban\" : \"TR570001001376804240195002\",\n    \"currency\" : \"GBP\"\n  },\n  \"instructedAmount\" : {\n    \"amount\" : 2000.0\n  },\n  \"remittanceInfo\" : {\n    \"unstructuredData\" : \"International Transfer To IBAN Test\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-PAYMENT-BASE}}/internationalPayment",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-PAYMENT-BASE}}",
+						"internationalPayment"
+					]
+				},
+				"description": "International payment requiest \nneeds BIC(aka SWIFT) code and Iban number"
+			},
+			"response": []
+		},
+		{
+			"name": "Payment-orderTransferBetweenAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "a",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "b",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "c",
+						"type": "text"
+					},
+					{
+						"key": "content_type",
+						"value": "d",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "e",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grpHdr\": {\n        \"referenceId\": \"tppRefId001\",\n        \"creDtTm\": {\"year\": 2019,\"month\": 7,\"day\": 12,\"hour\": 18,\"minute\": 23,\"second\": 44}\n    },\n    \"debtor\": {\n        \"accountId\": \"08351341\", \n        \"statementAvailable\": false\n    },\n    \"creditor\": {\n        \"statementAvailable\": false\n    },\n    \"instructedAmount\": {\n        \"amount\": 6.35\n    },\n    \"remittanceInfo\": {\n        \"unstructuredData\": \"School payment, etc.\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-PAYMENT-BASE}}/transferBetweenAccounts",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-PAYMENT-BASE}}",
+						"transferBetweenAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment-getPaymentStatus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "aaaa",
+						"type": "text"
+					},
+					{
+						"key": "audience",
+						"value": "bbbb",
+						"type": "text"
+					},
+					{
+						"key": "client_Id",
+						"value": "cccc",
+						"type": "text"
+					},
+					{
+						"key": "content_type",
+						"value": "dddd",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-customer-ip-address",
+						"value": "eeee",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{TBUK-API-URL}}/{{TBUK-PAYMENT-BASE}}/paymentStatusEnquiry/222",
+					"host": [
+						"{{TBUK-API-URL}}"
+					],
+					"path": [
+						"{{TBUK-PAYMENT-BASE}}",
+						"paymentStatusEnquiry",
+						"222"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://f197ba55-3392-4889-96ef-e2d8548574f3.mock.pstmn.io/myPath?a=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://f197ba55-3392-4889-96ef-e2d8548574f3.mock.pstmn.io/myPath?a=1",
+					"protocol": "https",
+					"host": [
+						"f197ba55-3392-4889-96ef-e2d8548574f3",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"myPath"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
