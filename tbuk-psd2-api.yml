@@ -6,10 +6,10 @@ info:
 host: 'localhost:8090'
 basePath: /
 tags:
-  - name: auth-service
-    description: Account Information Service
   - name: payment-initiation-service
     description: Payment Initiation Service
+  - name: auth-service
+    description: Authorisation Service
   - name: account-information-service
     description: Account Information Service
 paths:
@@ -24,11 +24,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -59,11 +71,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -106,11 +130,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -138,11 +174,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -174,11 +222,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -214,18 +274,30 @@ paths:
     get:
       tags:
         - auth-service
-      summary: getAccounts
-      operationId: getAccountsUsingGET_1
+      summary: getAuthorisation
+      operationId: getAuthorisationUsingGET
       consumes:
         - application/json
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -240,22 +312,34 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
-  /Auth/getPaymentUID:
+  '/Auth/getPaymentUID/{accountId}':
     get:
       tags:
         - auth-service
-      summary: getAccountDetail
-      operationId: getAccountDetailUsingGET_1
+      summary: getPaymentUID
+      operationId: getPaymentUIDUsingGET
       consumes:
         - application/json
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -268,7 +352,7 @@ paths:
         '200':
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/PaymentUID'
         '401':
           description: Unauthorized
         '403':
@@ -286,158 +370,32 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
           in: query
           required: false
           type: string
-        - name: grpHdr.referenceId
+        - name: x_fapi_customer_ip_address
           in: query
           required: false
           type: string
-        - name: debtor.address.address
+        - name: nonce
           in: query
           required: false
           type: string
-        - name: debtor.address.city
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.country
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountId
-          in: query
-          required: false
-          type: string
-        - name: debtor.name
-          in: query
-          required: false
-          type: string
-        - name: debtor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: debtor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.iban
-          in: query
-          required: false
-          type: string
-        - name: debtor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: debtor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: debtor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: creditor.address.address
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.city
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.country
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountId
-          in: query
-          required: false
-          type: string
-        - name: creditor.name
-          in: query
-          required: false
-          type: string
-        - name: creditor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: creditor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.iban
-          in: query
-          required: false
-          type: string
-        - name: creditor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: creditor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: creditor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: instructedAmount.amount
-          in: query
-          required: false
-          type: number
-          format: double
-        - name: instructedAmount.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: remittanceInfo.unstructuredData
-          in: query
-          required: false
-          type: string
+        - in: body
+          name: payementRequest
+          description: payementRequest
+          required: true
+          schema:
+            $ref: '#/definitions/PaymentInitiationRequest'
       responses:
         '200':
           description: OK
@@ -462,158 +420,32 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
           in: query
           required: false
           type: string
-        - name: grpHdr.referenceId
+        - name: x_fapi_customer_ip_address
           in: query
           required: false
           type: string
-        - name: debtor.address.address
+        - name: nonce
           in: query
           required: false
           type: string
-        - name: debtor.address.city
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.country
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountId
-          in: query
-          required: false
-          type: string
-        - name: debtor.name
-          in: query
-          required: false
-          type: string
-        - name: debtor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: debtor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.iban
-          in: query
-          required: false
-          type: string
-        - name: debtor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: debtor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: debtor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: creditor.address.address
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.city
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.country
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountId
-          in: query
-          required: false
-          type: string
-        - name: creditor.name
-          in: query
-          required: false
-          type: string
-        - name: creditor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: creditor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.iban
-          in: query
-          required: false
-          type: string
-        - name: creditor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: creditor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: creditor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: instructedAmount.amount
-          in: query
-          required: false
-          type: number
-          format: double
-        - name: instructedAmount.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: remittanceInfo.unstructuredData
-          in: query
-          required: false
-          type: string
+        - in: body
+          name: payementRequest
+          description: payementRequest
+          required: true
+          schema:
+            $ref: '#/definitions/PaymentInitiationRequest'
       responses:
         '200':
           description: OK
@@ -638,11 +470,23 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
+          in: query
+          required: false
+          type: string
+        - name: x_fapi_customer_ip_address
+          in: query
+          required: false
+          type: string
+        - name: nonce
           in: query
           required: false
           type: string
@@ -673,158 +517,32 @@ paths:
       produces:
         - '*/*'
       parameters:
+        - name: audience
+          in: query
+          required: false
+          type: string
         - name: client_Id
           in: query
           required: false
           type: string
-        - name: psu_IP
+        - name: content_Type
           in: query
           required: false
           type: string
-        - name: grpHdr.referenceId
+        - name: x_fapi_customer_ip_address
           in: query
           required: false
           type: string
-        - name: debtor.address.address
+        - name: nonce
           in: query
           required: false
           type: string
-        - name: debtor.address.city
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.country
-          in: query
-          required: false
-          type: string
-        - name: debtor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountId
-          in: query
-          required: false
-          type: string
-        - name: debtor.name
-          in: query
-          required: false
-          type: string
-        - name: debtor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: debtor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: debtor.iban
-          in: query
-          required: false
-          type: string
-        - name: debtor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: debtor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: debtor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: creditor.address.address
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.city
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.country
-          in: query
-          required: false
-          type: string
-        - name: creditor.address.postCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountId
-          in: query
-          required: false
-          type: string
-        - name: creditor.name
-          in: query
-          required: false
-          type: string
-        - name: creditor.sortCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.accountNo
-          in: query
-          required: false
-          type: string
-        - name: creditor.bicCode
-          in: query
-          required: false
-          type: string
-        - name: creditor.iban
-          in: query
-          required: false
-          type: string
-        - name: creditor.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: creditor.accountSubType
-          in: query
-          required: false
-          type: string
-          enum:
-            - CURRENT_ACCOUNT
-            - NOTICE_ACCOUNT
-            - TIME_DEPOSITS
-        - name: creditor.statementAvailable
-          in: query
-          required: false
-          type: boolean
-        - name: instructedAmount.amount
-          in: query
-          required: false
-          type: number
-          format: double
-        - name: instructedAmount.currency
-          in: query
-          required: false
-          type: string
-          enum:
-            - GBP
-            - USD
-            - TRY
-            - EUR
-        - name: remittanceInfo.unstructuredData
-          in: query
-          required: false
-          type: string
+        - in: body
+          name: payementRequest
+          description: payementRequest
+          required: true
+          schema:
+            $ref: '#/definitions/PaymentInitiationRequest'
       responses:
         '200':
           description: OK
@@ -860,14 +578,6 @@ definitions:
       rate:
         type: number
         format: double
-  AccountDetail:
-    type: object
-    properties:
-      balance:
-        type: number
-        format: double
-      bankAccount:
-        $ref: '#/definitions/BankAccount'
   Address:
     type: object
     properties:
@@ -910,6 +620,8 @@ definitions:
           - FAILURE_GENERIC
           - SENT
           - INITIATED
+      transactionId:
+        type: string
   Charge:
     type: object
     properties:
@@ -928,8 +640,28 @@ definitions:
       tax:
         type: number
         format: double
+  PaymentInitiationRequest:
+    type: object
+    properties:
+      creditor:
+        $ref: '#/definitions/BankAccount'
+      debtor:
+        $ref: '#/definitions/BankAccount'
+      grpHdr:
+        $ref: '#/definitions/GrpHdr'
+      instructedAmount:
+        $ref: '#/definitions/InstructedAmount'
+      remittanceInfo:
+        $ref: '#/definitions/RemittanceInfo'
   BankAuthorization:
     type: object
+    properties:
+      bankAccounts:
+        type: array
+        items:
+          $ref: '#/definitions/BankAccount'
+      psuMember_id:
+        type: string
   Error:
     type: object
     properties:
@@ -1009,3 +741,74 @@ definitions:
         $ref: '#/definitions/BankAccount'
       transactionId:
         type: string
+  Date:
+    type: object
+    properties:
+      day:
+        type: integer
+        format: int32
+      month:
+        type: integer
+        format: int32
+      year:
+        type: integer
+        format: int32
+  DateTime:
+    type: object
+    properties:
+      day:
+        type: integer
+        format: int32
+      hour:
+        type: integer
+        format: int32
+      minute:
+        type: integer
+        format: int32
+      month:
+        type: integer
+        format: int32
+      second:
+        type: integer
+        format: int32
+      year:
+        type: integer
+        format: int32
+  GrpHdr:
+    type: object
+    properties:
+      creDtTm:
+        $ref: '#/definitions/DateTime'
+      referenceId:
+        type: string
+  AccountDetail:
+    type: object
+    properties:
+      balance:
+        type: number
+        format: double
+      bankAccount:
+        $ref: '#/definitions/BankAccount'
+  RemittanceInfo:
+    type: object
+    properties:
+      unstructuredData:
+        type: string
+  PaymentUID:
+    type: object
+    properties:
+      paymentUID:
+        type: string
+  InstructedAmount:
+    type: object
+    properties:
+      amount:
+        type: number
+        format: double
+      currency:
+        type: string
+        enum:
+          - GBP
+          - USD
+          - TRY
+          - EUR
