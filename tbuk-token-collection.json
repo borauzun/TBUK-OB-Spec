@@ -1,0 +1,998 @@
+{
+	"info": {
+		"_postman_id": "160fcf5c-e038-4957-8cc4-be2dde00b335",
+		"name": "TPP-server-gets-access-code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/health",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Link",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/linking/authorizations/Bearer d4254445tt345443t326423t243t23464326423632463426234634643634634",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"linking",
+						"authorizations",
+						"Bearer d4254445tt345443t326423t243t23464326423632463426234634643634634"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Transfer - !",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"transferId\": \"t:I58bxf:5mXpRAcI\",\n  \"requestedAmount\": {\n    \"currency\": \"USD\",\n    \"value\": \"100.00\"\n  },\n  \"transactionAmount\": {\n    \"currency\": \"USD\",\n    \"value\": \"100.00\"\n  },\n  \"source\": {\n    \"swift\": {\n      \"bic\": \"IRONUSCA000\",\n      \"account\": \"iban:3814827\"\n    }\n  },\n  \"destinations\": [{\n    \"account\": {\n      \"swift\": {\n        \"bic\": \"IRONUSCA000\",\n        \"account\": \"iban:3814827\"\n      }\n    },\n    \"customerData\": {\n      \"legalNames\": [\"John Smith\"],\n      \"address\": {\n        \"houseNumber\": \"332C\",\n        \"street\": \"Cook St\"\n      }\n    }\n  }],\n  \"feeResponsibility\": \"SHARED_FEE\",\n  \"description\": \"Sample Transfer\"\n}"
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/transfers",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"transfers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				},
+				{
+					"name": "Transfer - !",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "tpp",
+								"value": "1",
+								"description": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"transferId\": \"t:I58bxf:5mXpRAcI2\",\n  \"requestedAmount\": {\n    \"currency\": \"USD\",\n    \"value\": \"100.00\"\n  },\n  \"transactionAmount\": {\n    \"currency\": \"USD\",\n    \"value\": \"100.00\"\n  },\n  \"source\": {\n    \"swift\": {\n      \"bic\": \"IRONUSCA000\",\n      \"account\": \"iban:3814827\"\n    }\n  },\n  \"destinations\": [{\n    \"account\": {\n      \"swift\": {\n        \"bic\": \"IRONUSCA000\",\n        \"account\": \"iban:3814827\"\n      }\n    },\n    \"customerData\": {\n      \"legalNames\": [\"John Smith\"],\n      \"address\": {\n        \"houseNumber\": \"332C\",\n        \"street\": \"Cook St\"\n      }\n    }\n  }],\n  \"feeResponsibility\": \"SHARED_FEE\",\n  \"description\": \"Sample Transfer\"\n}"
+						},
+						"url": {
+							"raw": "{{tbuk-token-host}}/transfers",
+							"host": [
+								"{{tbuk-token-host}}"
+							],
+							"path": [
+								"transfers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 27 Jul 2019 17:47:32 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionId\": \"2\",\n    \"status\": \"PROCESSING\",\n    \"statusDescription\": \"Received by TBUK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Transfer - Status -!",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/transfers/1/status",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"transfers",
+						"1",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountType\": \"CUSTOM\",\n  \"account\": {\n    \"bankId\": \"tbuk\",\n    \"payload\": \"0123456789\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - getBalance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/1/balance",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"1",
+						"balance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - transactions- !",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/08347883/transactions",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"08347883",
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - transactiondetail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/08347883/transactions/2",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"08347883",
+						"transactions",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - destinations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/1/destinations",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"1",
+						"destinations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - account details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/1/details",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"1",
+						"details"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Account - unlink",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/accounts/08347883",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"accounts",
+						"08347883"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Consent-created",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/consents/1/created",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"consents",
+						"1",
+						"created"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Consent-revoked",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/consents/1/revoked",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"consents",
+						"1",
+						"revoked"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Notifications - put",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"notificationId\": \"1\",\n  \"subscriber\": {\n    \"subscriberId\": \"1\",\n    \"handler\": \"Token\",\n    \"handlerInstructions\": [\n      {\n        \"key\": \"apns-id\",\n        \"value\": \"123e4567-e89b-12d3-a456-42665544000\"\n      }\n    ]\n  },\n  \"content\": {\n    \"type\": \"string\",\n    \"title\": \"string\",\n    \"body\": \"string\",\n    \"payload\": \"string\",\n    \"locKey\": \"string\",\n    \"locArgs\": [\n      \"string\"\n    ],\n    \"createdAt\": \"2019-07-26T20:58:20.394Z\"\n  },\n  \"status\": [\n    null\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/notifications",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"notifications"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Notifications - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/notifications/1",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"notifications",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Storage - entry",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"key\": \"1\",\n  \"value\": \"61\",\n  \"category\": \"ACCOUNT_INFO\"\n}"
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/storage/entries",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"storage",
+						"entries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Storage - getEntry",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/storage/entries/1",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"storage",
+						"entries",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		},
+		{
+			"name": "Storage - deleteEntry",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{tbuk-token-host}}/storage/entries/1",
+					"host": [
+						"{{tbuk-token-host}}"
+					],
+					"path": [
+						"storage",
+						"entries",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/myPath",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"myPath"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "Success"
+				}
+			]
+		}
+	]
+}
